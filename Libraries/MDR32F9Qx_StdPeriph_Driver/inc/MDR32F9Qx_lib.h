@@ -29,6 +29,9 @@
 extern "C" {
 #endif
 
+#include "MDR32F9Qx_config.h"
+#include <stdint.h>
+
 #define FILEID__MDR32F9X_CAN_C					1
 #define FILEID__MDR32F9X_USB_C					2
 #define FILEID__MDR32F9X_EEPROM_C				3
