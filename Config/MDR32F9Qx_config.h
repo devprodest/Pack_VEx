@@ -41,10 +41,32 @@
 
 /* Define to prevent recursive inclusion -------------------------------------*/
 #ifndef __MDR32F9Qx_CONFIG_H
-#define __MDR32F9Qx_CONFIG_H
+//#define __MDR32F9Qx_CONFIG_H
 
-#if ((__CC_ARM == 0) || (__ARMCC_VERSION < 5000000))
-	#include "MDR32F9Qx_board.h"
+#if !(defined(USE_MDR32F9Q1_Rev0) || defined(USE_MDR32F9Q1_Rev1)  || \
+      defined(USE_MDR32F9Q2_Rev0) || defined(USE_MDR32F9Q2_Rev1)  || \
+      defined(USE_MDR32F9Q3_Rev0) || defined(USE_MDR32F9Q3_Rev1)  || \
+      defined(USE_MDR1986VE1T)    || defined(USE_MDR1986BE7T)     || \
+      defined(USE_MDR1986VE3)     || defined(USE_MDR1986VE94))
+       
+// #define USE_MDR32F9Q1_Rev0
+// #define USE_MDR32F9Q1_Rev1
+// #define USE_MDR32F9Q2_Rev0
+// #define USE_MDR32F9Q2_Rev1
+// #define USE_MDR32F9Q3_Rev0
+// #define USE_MDR32F9Q3_Rev1
+// #define USE_MDR1986VE1T
+// #define USE_MDR1986VE3
+// #define USE_MDR1986VE9x
+// #define USE_MDR1986VE94
+
+#endif
+#if !(defined(USE_MDR32F9Q1_Rev0) || defined(USE_MDR32F9Q1_Rev1)  || \
+      defined(USE_MDR32F9Q2_Rev0) || defined(USE_MDR32F9Q2_Rev1)  || \
+      defined(USE_MDR32F9Q3_Rev0) || defined(USE_MDR32F9Q3_Rev1)  || \
+      defined(USE_MDR1986VE1T)    || defined(USE_MDR1986BE7T)     || \
+      defined(USE_MDR1986VE3)     || defined(USE_MDR1986VE94))
+    #error "No controller is defined"
 #endif
 #include "MDR32F9Qx_lib.h"
 #include <stdint.h>
@@ -53,31 +75,31 @@
     defined (USE_MDR32F9Q2_Rev0) || defined (USE_MDR32F9Q2_Rev1) ||\
     defined (USE_MDR32F9Q3_Rev0) || defined (USE_MDR32F9Q3_Rev1) ||\
     defined (USE_MDR1986VE94)
-	#define USE_MDR1986VE9x
+    #define USE_MDR1986VE9x
 #endif
 
 #if defined (USE_MDR1986BE7T)
-	#define USE_MDR1986VE1T
+    #define USE_MDR1986VE1T
 #endif
 
 /* Selet the header file for target microcontroller */
 #if defined ( USE_MDR1986VE9x )
-	#include "MDR32Fx.h"
+    #include "MDR32Fx.h"
 #elif defined (USE_MDR1986VE1T)
-	#include "MDR1986VE1T.h"
+    #include "MDR1986VE1T.h"
 #elif defined ( USE_MDR1986VE3 )
-	#include "MDR1986VE3.h"
+    #include "MDR1986VE3.h"
 #elif defined ( USE_MDR1901VC1T )
-	#include "MDR1901VC1T.h"
+    #include "MDR1901VC1T.h"
 #elif defined (USE_MDR1986BE4)
-	#include "MDR1986BE4.h"
+    #include "MDR1986BE4.h"
 #endif
 
 /* Uncomment the line(s) below to define used JTAG port(s). Leave all commented
  * if there is no JTAG ports */
 #if (defined(USE_MDR1986VE9x) || defined (USE_MDR1901VC1T))
- //#define USE_JTAG_A 
- #define USE_JTAG_B 
+#define USE_JTAG_A
+//#define USE_JTAG_B 
 #endif
 
 /* Target system parameters */
@@ -90,7 +112,7 @@
 
 /* RST_CLK frequencies startup timeouts settings */
 #define HSEonTimeOut    ((uint16_t)0x0600)
-#define HSE2onTimeOut	((uint16_t)0x8000)
+#define HSE2onTimeOut   ((uint16_t)0x8000)
 #define LSEonTimeOut    ((uint16_t)0x0600)
 #define HSIonTimeOut    ((uint16_t)0x0600)
 #define LSIonTimeOut    ((uint16_t)0x0600)
@@ -105,29 +127,29 @@
 #if defined (_USE_DEBUG_UART_)
 
 #if defined (USE_MDR1986VE3)
-	#define DEBUG_UART 					MDR_UART2
-	#define DEBUG_UART_PORT				MDR_PORTD
-	#define DEBUG_UART_PINS				(PORT_Pin_13 | PORT_Pin_14)
-	#define DEBUG_UART_PINS_FUNCTION	PORT_FUNC_MAIN
-	#define DEBUG_BAUD_RATE				115200
+    #define DEBUG_UART                      MDR_UART2
+    #define DEBUG_UART_PORT                 MDR_PORTD
+    #define DEBUG_UART_PINS                 (PORT_Pin_13 | PORT_Pin_14)
+    #define DEBUG_UART_PINS_FUNCTION        PORT_FUNC_MAIN
+    #define DEBUG_BAUD_RATE                 115200
 #elif defined (USE_MDR1986VE1T)
-	#define DEBUG_UART 					MDR_UART1
-	#define DEBUG_UART_PORT				MDR_PORTC
-	#define DEBUG_UART_PINS				(PORT_Pin_3 | PORT_Pin_4)
-	#define DEBUG_UART_PINS_FUNCTION	PORT_FUNC_MAIN
-	#define DEBUG_BAUD_RATE				115200
+    #define DEBUG_UART                      MDR_UART1
+    #define DEBUG_UART_PORT                 MDR_PORTC
+    #define DEBUG_UART_PINS                 (PORT_Pin_3 | PORT_Pin_4)
+    #define DEBUG_UART_PINS_FUNCTION        PORT_FUNC_MAIN
+    #define DEBUG_BAUD_RATE                 115200
 #elif defined (USE_MDR1986VE9x)
-	#define DEBUG_UART 					MDR_UART2
-	#define DEBUG_UART_PORT				MDR_PORTF
-	#define DEBUG_UART_PINS				(PORT_Pin_0 | PORT_Pin_1)
-	#define DEBUG_UART_PINS_FUNCTION	PORT_FUNC_OVERRID
-	#define DEBUG_BAUD_RATE				115200
+    #define DEBUG_UART                      MDR_UART2
+    #define DEBUG_UART_PORT                 MDR_PORTF
+    #define DEBUG_UART_PINS                 (PORT_Pin_0 | PORT_Pin_1)
+    #define DEBUG_UART_PINS_FUNCTION        PORT_FUNC_OVERRID
+    #define DEBUG_BAUD_RATE                 115200
 #elif defined (USE_MDR1901VC1T)
-	#define DEBUG_UART 			MDR_UART3
-	#define DEBUG_UART_PORT			MDR_PORTF
-	#define DEBUG_UART_PINS			(PORT_Pin_0 | PORT_Pin_1)
-	#define DEBUG_UART_PINS_FUNCTION	PORT_FUNC_ALTER
-	#define DEBUG_BAUD_RATE			115200
+    #define DEBUG_UART                      MDR_UART3
+    #define DEBUG_UART_PORT                 MDR_PORTF
+    #define DEBUG_UART_PINS                 (PORT_Pin_0 | PORT_Pin_1)
+    #define DEBUG_UART_PINS_FUNCTION        PORT_FUNC_ALTER
+    #define DEBUG_BAUD_RATE                 115200
 #endif
 
 //#define PRINTF_FORMAT_FULL
@@ -136,12 +158,12 @@
 #endif /* #if defined (_USE_DEBUG_UART_) */
 
 #if defined ( USE_MDR1986VE3 ) || defined ( USE_MDR1986VE1T )
-	#define MIL_STD_1553_TERMINAL_ADDRESS	0x01
+    #define MIL_STD_1553_TERMINAL_ADDRESS    0x01
 #endif /* #if defined ( USE_MDR1986VE3 ) || defined ( USE_MDR1986VE1T ) */
 
 /* RTC configuration parameters */
-#define RTC_CalibratorValue   	0
-#define RTC_PRESCALER_VALUE		32768
+#define RTC_CalibratorValue         0
+#define RTC_PRESCALER_VALUE         32768
 
 /* DMA configuration parameters */
 /* Number of DMA channels to use */
@@ -170,12 +192,12 @@
 
 /* USB CDC management */
 /* Uncomment the lines below to enable appropriate functionality. */
-/* #define USB_CDC_STATE_REPORTING_SUPPORTED 	*/
-/* #define USB_CDC_ENCAPSULATION_SUPPORTED 	*/
-/* #define USB_CDC_COMM_FEATURE_SUPPORTED 	*/
-#define USB_CDC_LINE_CODING_SUPPORTED 	
+/* #define USB_CDC_STATE_REPORTING_SUPPORTED     */
+/* #define USB_CDC_ENCAPSULATION_SUPPORTED     */
+/* #define USB_CDC_COMM_FEATURE_SUPPORTED     */
+#define USB_CDC_LINE_CODING_SUPPORTED     
 /* #define USB_CDC_CONTROL_LINE_STATE_SUPPORTED */
-/* #define USB_CDC_LINE_BREAK_SUPPORTED 	*/
+/* #define USB_CDC_LINE_BREAK_SUPPORTED     */
 
 /* VCOM Echo example flags */
 
@@ -201,7 +223,7 @@
      2 - check enabled, source file ID, line number and checking expression
          (as string) are available (increased code size).
 */
- #define USE_ASSERT_INFO    0 
+ #define USE_ASSERT_INFO    0
 /* #define USE_ASSERT_INFO    1 */
 /* #define USE_ASSERT_INFO    2 */
 
@@ -220,27 +242,27 @@
   void assert_failed(uint32_t file_id, uint32_t line);
 #elif (USE_ASSERT_INFO == 2)
   #define assert_param(expr) ((expr) ? (void)0 : assert_failed(ASSERT_INFO_FILE_ID, __LINE__, #expr))
-  void assert_failed(uint32_t file_id, uint32_t line, const uint8_t* expr);
+  void assert_failed(uint32_t file_id, uint32_t line, const char* expr);
 #else
   #error "Unsupported USE_ASSERT_INFO level"
 #endif /* USE_ASSERT_INFO */
 
 #if defined (__ICCARM__)
-	#define __attribute__(name_section)
-	#if defined (USE_MDR1986VE3) || defined (USE_MDR1986VE1T)
-		#pragma section = "EXECUTABLE_MEMORY_SECTION"
-		#define IAR_SECTION(section) @ section
-	#elif defined (USE_MDR1986VE9x)
-		#define IAR_SECTION(section)
-	#endif
+    #define __attribute__(name_section)
+    #if defined (USE_MDR1986VE3) || defined (USE_MDR1986VE1T)
+        #pragma section = "EXECUTABLE_MEMORY_SECTION"
+        #define IAR_SECTION(section) @ section
+    #elif defined (USE_MDR1986VE9x)
+        #define IAR_SECTION(section)
+    #endif
 #endif
 #if defined (__CMCARM__)
-		#define __attribute__(name_section)
-		#define IAR_SECTION(section)
+        #define __attribute__(name_section)
+        #define IAR_SECTION(section)
 #endif
 
 #if defined (__CC_ARM)
-	#define IAR_SECTION(section)
+    #define IAR_SECTION(section)
 #endif
 
 #endif /* __MDR32F9Qx_CONFIG_H */
