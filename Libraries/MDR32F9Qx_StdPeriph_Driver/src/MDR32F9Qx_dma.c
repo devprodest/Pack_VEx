@@ -1,27 +1,8 @@
 /**
-  ******************************************************************************
-  * @file    MDR32F9Qx_dma.c
-  * @author  Phyton Application Team
-  * @version V1.3.0
-  * @date    11/06/2010
-  * @brief   This file contains all the DMA firmware functions.
-  ******************************************************************************
-  * <br><br>
-  *
-  * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
-  * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
-  * TIME. AS A RESULT, PHYTON SHALL NOT BE HELD LIABLE FOR ANY DIRECT, INDIRECT
-  * OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
-  * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
-  * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
-  *
-  * <h2><center>&copy; COPYRIGHT 2010 Phyton</center></h2>
-  ******************************************************************************
   * FILE MDR32F9Qx_dma.c
   */
 
 /* Includes ------------------------------------------------------------------*/
-#include "MDR32F9Qx_config.h"
 #include "MDR32F9Qx_dma.h"
 
 #define ASSERT_INFO_FILE_ID FILEID__MDR32F9X_DMA_C
@@ -528,7 +509,7 @@ FlagStatus DMA_GetFlagStatus(uint8_t DMA_Channel, uint8_t DMA_Flag)
     case DMA_FLAG_CHNL_ALT:
       return (FlagStatus)((MDR_DMA->CHNL_PRI_ALT_SET & (1 << DMA_Channel)) != 0);
     case DMA_FLAG_CHNL_PRIORITY:
-      return (FlagStatus)((MDR_DMA->CHNL_PRIORITY_SET & (1 << DMA_Channel) != 0));
+      return (FlagStatus)((MDR_DMA->CHNL_PRIORITY_SET & (1 << DMA_Channel)) != 0);
     default:
       return (FlagStatus)0;
   }
@@ -540,7 +521,7 @@ FlagStatus DMA_GetFlagStatus(uint8_t DMA_Channel, uint8_t DMA_Flag)
 
 /** @} */ /* End of group __MDR32F9Qx_StdPeriph_Driver */
 
-/******************* (C) COPYRIGHT 2010 Phyton *********************************
+/*
 *
 * END OF FILE MDR32F9Qx_dma.c */
 

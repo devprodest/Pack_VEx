@@ -1,23 +1,4 @@
 /**
-  ******************************************************************************
-  * @file    MDR32F9Qx_rst_clk.h
-  * @author  Phyton Application Team
-  * @version V1.3.0
-  * @date    23/09/2011
-  * @brief   This file contains all the functions prototypes for the RST_CLK
-  *          firmware library.
-  ******************************************************************************
-  * <br><br>
-  *
-  * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
-  * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
-  * TIME. AS A RESULT, PHYTON SHALL NOT BE HELD LIABLE FOR ANY DIRECT, INDIRECT
-  * OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
-  * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
-  * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
-  *
-  * <h2><center>&copy; COPYRIGHT 2010 Phyton</center></h2>
-  ******************************************************************************
   * FILE MDR32F9Qx_rst_clk.h
   */
 
@@ -30,6 +11,7 @@ extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
+#include "MDR32F9Qx_config.h"
 #include "MDR32F9Qx_lib.h"
 
 /** @addtogroup __MDR32F9Qx_StdPeriph_Driver MDR32F9Qx Standard Peripherial Driver
@@ -174,7 +156,7 @@ typedef struct {
 #define RST_CLK_CPU_PLLmul15                    ((uint32_t)0x0000000E)
 #define RST_CLK_CPU_PLLmul16                    ((uint32_t)0x0000000F)
 
-#define IS_RST_CLK_CPU_PLL_MUL(SRC)             ((SRC>=0) && (SRC<16))
+#define IS_RST_CLK_CPU_PLL_MUL(SRC)             (((SRC)>=0) && ((SRC)<16))
 
 /** @} */ /* End of group CPU_PLL_clock_multiplier */
 
@@ -224,7 +206,7 @@ typedef struct {
 #define RST_CLK_USB_PLLmul15                    ((uint32_t)0x0000000E)
 #define RST_CLK_USB_PLLmul16                    ((uint32_t)0x0000000F)
 
-#define IS_RST_CLK_USB_PLL_MUL(SRC)             ((SRC>=0) && (SRC<16))
+#define IS_RST_CLK_USB_PLL_MUL(SRC)             (((SRC)>=0) && ((SRC)<16))
 
 /** @} */ /* End of group USB_PLL_clock_multiplier */
 
@@ -669,10 +651,10 @@ typedef struct {
 #define DSP_C1_CLOCK_HSE					(uint32_t)(0x0000002)
 #define DSP_C1_CLOCK_HSE2					(uint32_t)(0x0000003)
 
-#define IS_DSP_C1_CLOCK(CLOCK)				((CLOCK == DSP_C1_CLOCK_HSI)  ||\
-											 (CLOCK == DSP_C1_CLOCK_HSI2) ||\
-											 (CLOCK == DSP_C1_CLOCK_HSE)  ||\
-											 (CLOCK == DSP_C1_CLOCK_HSE2))
+#define IS_DSP_C1_CLOCK(CLOCK)				(((CLOCK) == DSP_C1_CLOCK_HSI)  ||\
+											 ((CLOCK) == DSP_C1_CLOCK_HSI2) ||\
+											 ((CLOCK) == DSP_C1_CLOCK_HSE)  ||\
+											 ((CLOCK) == DSP_C1_CLOCK_HSE2))
 
 /** @} */ /* End of group DSP_C1_CLOCK */
 
@@ -697,8 +679,8 @@ typedef struct {
 #define DSP_PLL_MUL15						(uint32_t)(0x0000000E)
 #define DSP_PLL_MUL16						(uint32_t)(0x0000000F)
 
-#define	IS_DSP_PLL_MULL(PLL_MUL)			((PLL_MUL >= DSP_PLL_MUL1) &&\
-										    (PLL_MUL <= DSP_PLL_MUL15))
+#define	IS_DSP_PLL_MULL(PLL_MUL)			(((PLL_MUL) >= DSP_PLL_MUL1) &&\
+										    ((PLL_MUL) <= DSP_PLL_MUL15))
 
 /** @} */ /* End of group DSP_PLL_MUL */
 
@@ -709,8 +691,8 @@ typedef struct {
 #define DSP_PRESCALER1						(uint32_t)(0x00000000)
 #define DSP_PRESCALER2						(uint32_t)(0x00000001)
 
-#define IS_DSP_PRESCALER(PRESCALER)			((PRESCALER == DSP_PRESCALER1) ||\
-											 (PRESCALER == DSP_PRESCALER2))
+#define IS_DSP_PRESCALER(PRESCALER)			(((PRESCALER) == DSP_PRESCALER1) ||\
+											 ((PRESCALER) == DSP_PRESCALER2))
 
 /** @} */ /* End of group DSP_Prescalere */
 
@@ -811,6 +793,6 @@ FlagStatus RST_CLK_GetFlagStatus(uint32_t RST_CLK_FLAG);
 
 #endif /* __MDR32F9Qx_RST_CLK_H */
 
-/******************* (C) COPYRIGHT 2010 Phyton *********************************
+/*
 *
 * END OF FILE MDR32F9Qx_rst_clk.h */

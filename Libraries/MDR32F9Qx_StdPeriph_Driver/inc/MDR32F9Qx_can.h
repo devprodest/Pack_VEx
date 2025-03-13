@@ -1,23 +1,4 @@
 /**
-  ******************************************************************************
-  * @file    MDR32F9Qx_can.h
-  * @author  Phyton Application Team
-  * @version V1.3.0
-  * @date    20/07/2011
-  * @brief   This file contains all the functions prototypes for the CAN
-  *          firmware library.
-  ******************************************************************************
-  * <br><br>
-  *
-  * THE PRESENT FIRMWARE WHICH IS FOR GUIDANCE ONLY AIMS AT PROVIDING CUSTOMERS
-  * WITH CODING INFORMATION REGARDING THEIR PRODUCTS IN ORDER FOR THEM TO SAVE
-  * TIME. AS A RESULT, PHYTON SHALL NOT BE HELD LIABLE FOR ANY DIRECT, INDIRECT
-  * OR CONSEQUENTIAL DAMAGES WITH RESPECT TO ANY CLAIMS ARISING
-  * FROM THE CONTENT OF SUCH FIRMWARE AND/OR THE USE MADE BY CUSTOMERS OF THE
-  * CODING INFORMATION CONTAINED HEREIN IN CONNECTION WITH THEIR PRODUCTS.
-  *
-  * <h2><center>&copy; COPYRIGHT 2011 Phyton</center></h2>
-  ******************************************************************************
   * FILE MDR32F9Qx_can.h
   */
 
@@ -30,6 +11,7 @@ extern "C" {
 #endif
 
 /* Includes ------------------------------------------------------------------*/
+#include "MDR32F9Qx_config.h"
 #include "MDR32F9Qx_lib.h"
 
 /** @addtogroup __MDR32F9Qx_StdPeriph_Driver MDR32F9Qx Standard Peripherial Driver
@@ -415,7 +397,7 @@ typedef struct
 #define CAN_IT_MASK		(CAN_IT_GLBINTEN | CAN_IT_RXINTEN | CAN_IT_TXINTEN |\
 						 CAN_IT_ERRINTEN | CAN_IT_ERROVERINTEN)
 
-#define IS_CAN_ITConfig(IT) 		((IT & (~CAN_IT_MASK)) == 0)
+#define IS_CAN_ITConfig(IT) 		(((IT) & (~CAN_IT_MASK)) == 0)
 
 /** @} */ /* End of group CAN_interrupts */
 
@@ -539,7 +521,7 @@ void CAN_BRGInit(MDR_CAN_TypeDef* CANx, uint32_t CAN_BRG);
 
 #endif /* __MDR32F9Qx_CAN_H */
 
-/******************* (C) COPYRIGHT 2011 Phyton *********
+/*
 *
 * END OF FILE MDR32F9Qx_can.h */
 
